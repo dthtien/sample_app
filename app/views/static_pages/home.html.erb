@@ -1,3 +1,16 @@
 <% provide(:title, "Home") %>
-<h1>Sample App</h1>
-<p>This create by <%= link_to "The Tien", "https://www.fb.com/dthtien", target: "_blank" %> acording to Rails tutorials</p>
+<div class="body-center">
+  <h1 class="display-1">Wellcome to Sample App</h1>
+  <p  class="lead">
+    Rails tutorials Chapter 5
+  </p>
+   <%= link_to "Sign up now!", singup_path, class: "btn btn-lg btn-primary" %>
+   <br>
+   <br>
+   <%= image_tag "http://wallpapercave.com/wp/XDZWopT.jpg", class: " 
+    rounded-circle img-responsive" %>
+    <br>
+    <br>
+    <%= link_to image_tag("http://railstutorial.org/rails.png", alt: "Rails logo", class: "pt-5"),'http://rubyonrails.org/' %>
+
+</div>
