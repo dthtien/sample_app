@@ -56,3 +56,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Custom StyleSheet
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'pg', group: :production
