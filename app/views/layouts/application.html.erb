@@ -31,6 +31,13 @@
       </div>
       </nav>
       <div class="container">
+        <% flash.each do |key, msg| %>
+          <div class="alert alert-<%= key %>">
+            <strong>
+              <%= msg %>
+            </strong> 
+          </div>
+        <% end %>
         <%= yield %>
       </div>
       <div class="footer">
@@ -44,6 +51,7 @@
           </nav>
           <h1 class="display-3">This create by <%= link_to "The Tien", "https://www.fb.com/dthtien", target: "_blank" %> acording to Rails tutorials</h1>
         </div>
+          <%= debug(params) if Rails.env.development? %>
       </div>
   </body>
 </html>
