@@ -9,56 +9,63 @@
   </head>
 
   <body>
-      <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-        <%= link_to "Sample App", root_path, id: "logo", class: "navbar-brand" %>
-        </div>
-        <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to "Home",   root_path , class: "activite"%></li>
-         <li><%= link_to "Help",   help_path %></li>
-         <% if logged_in? %>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <%= current_user.name %> <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to "Profile", current_user %></li>
-              <li><%= link_to "Settings", '#' %></li>
-              <li class="divider"></li>
-              <li>
-                <%= link_to "Log out", logout_path, method: "delete" %>
-              </li>
-            </ul>
+    <nav>
+      <div class="nav-wrapper">
+        <%= link_to "Sample App", root_path, class: "brand-logo" %>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li class="tab">
+            <%= link_to "Home",   root_path%>
           </li>
-        <% else %>
-          <li><%= link_to "Log in", login_path %></li>
-        <% end %>
+          <li class="tab"><%= link_to "Help",   help_path %></li>
+          <% if logged_in? %>
+            <li>
+              <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Drop Me!</a>
+              <ul id='dropdown1' class='dropdown-content'>
+                <li><%= link_to "Profile", current_user %></li>
+                <li>
+                  <%= link_to "Log out", logout_path, method: "delete" %>
+                </li>
+              </ul>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to "Log in", login_path %>
+            </li>
+          <% end %>
         </ul>
       </div>
-      </nav>
+    </nav>
       <div class="container">
-        <% flash.each do |key, msg| %>
-          <div class="alert alert-<%= key %>">
-            <strong>
-              <%= msg %>
-            </strong> 
-          </div>
-        <% end %>
-        <%= yield %>
+        <div class="center">
+         <% flash.each do |key, msg| %>
+            <%= javascript_tag "Materialize.toast('#{msg}', 4000, 'rounded #{key}')" %>
+          <% end %>
+          <%= yield %>
+        </div>
       </div>
-      <div class="footer">
+      <footer class="page-footer">
         <div class="container">
-          <nav>
-            <ul>
-              <li><%= link_to "About",   about_path %></li>
-              <li><%= link_to "Contact", contact_path %></li>
-              <li><a href="http://news.railstutorial.org/">News</a></li>
-            </ul>
-          </nav>
-          <h1 class="display-3">This create by <%= link_to "The Tien", "https://www.fb.com/dthtien", target: "_blank" %> acording to Rails tutorials</h1>
+          <div class="row">
+            <div class="col l6 s12">
+              <h5 class="white-text">Footer Content</h5>
+              <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+            </div>
+            <div class="col l4 offset-l2 s12">
+              <h5 class="white-text">More page</h5>
+               <ul>
+                <li><%= link_to "About",   about_path , class: "white-text"%></li>
+                <li><%= link_to "Contact", contact_path, class: "white-text" %></li>
+                <li><a href="http://news.railstutorial.org/" class="white-text">News</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer-copyright">
+          <div class="container">
+            <p class="display-3">This create by <%= link_to "The Tien", "https://www.fb.com/dthtien", target: "_blank" %> acording to Rails tutorials</p>
+          </div>
         </div>
           <%= debug(params) if Rails.env.development? %>
-      </div>
+      </footer>
   </body>
 </html>

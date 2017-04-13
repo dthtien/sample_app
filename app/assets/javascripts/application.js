@@ -14,4 +14,13 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-//= require bootstrap-sprockets
+//= require materialize-sprockets
+//= require materialize-form
+
+$(document).on('turbolinks:load', function() {
+  // Dropdown current user
+  $("#user-dropdown-button").dropdown({
+    hover: true, // Activate on hover
+    belowOrigin: true // Displays dropdown below the button
+  });
+})

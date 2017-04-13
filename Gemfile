@@ -55,5 +55,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Custom StyleSheet
-gem 'bootstrap-sass', '~> 3.3.6'
+gem 'simple_form'
+gem 'materialize-sass', '~> 0.98.1'
+gem 'materialize-form', '~> 1.0.8'
+gem 'jquery-turbolinks'
 gem 'pg', group: :production
