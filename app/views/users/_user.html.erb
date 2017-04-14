@@ -1,0 +1,15 @@
+<div class="card hoverable">
+  <%= gravatar_for(user) %>
+  <p><%= user.name %></p>  
+  <%= link_to user, class: "tooltipped", data: {tooltip: "Watch profile",
+   position: 'left', delay: '10'} do%>
+  <i class="material-icons">send</i>
+  <% end %>
+  <% if current_user.admin? && !current_user.own?(user) %>
+    <%= link_to user, class: "tooltipped", method: :delete,
+        data: { tooltip: "Delete #{user.name}", 
+          position: "right", delay: 20, confirm: "You sure?" } do %>
+      <i class="material-icons">delete</i>
+    <% end %>
+  <% end %>
+</div>

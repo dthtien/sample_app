@@ -9,7 +9,7 @@
   </head>
 
   <body>
-    <nav>
+    <nav id="nav-header">
       <div class="nav-wrapper">
         <%= link_to "Sample App", root_path, class: "brand-logo" %>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -19,8 +19,12 @@
           <li class="tab"><%= link_to "Help",   help_path %></li>
           <% if logged_in? %>
             <li>
-              <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Drop Me!</a>
-              <ul id='dropdown1' class='dropdown-content'>
+              <a class='dropdown-button' href='#' 
+                data-activates='dropdown-user'>
+                <%= current_user.name %>
+                <i class="material-icons right">arrow_drop_down</i>
+              </a>
+              <ul id='dropdown-user' class='dropdown-content'>
                 <li><%= link_to "Profile", current_user %></li>
                 <li>
                   <%= link_to "Log out", logout_path, method: "delete" %>
@@ -52,10 +56,17 @@
             </div>
             <div class="col l4 offset-l2 s12">
               <h5 class="white-text">More page</h5>
-               <ul>
-                <li><%= link_to "About",   about_path , class: "white-text"%></li>
-                <li><%= link_to "Contact", contact_path, class: "white-text" %></li>
-                <li><a href="http://news.railstutorial.org/" class="white-text">News</a></li>
+              <ul>
+                <li>
+                  <%= link_to "About",   about_path , class: "white-text"%>
+                </li>
+                <li>
+                  <%= link_to "Contact", contact_path, class: "white-text" %>
+                </li>
+                <li>
+                  <a href="http://news.railstutorial.org/" class="white-text">  News
+                  </a>
+                </li>
               </ul>
             </div>
           </div>

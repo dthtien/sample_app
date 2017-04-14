@@ -1,2 +1,23 @@
-<%= @user.name%>
-<%= gravatar_for @user %>
+<div id="profile">
+  <div class="row">
+    <div class="col s12 m4 l4">
+      <div class="profile-image center">
+        <%= gravatar_for @user %>
+      </div> 
+    </div>
+    <div class="col s12 m8 l8">
+      <blockquote>
+        <div class="profile-body"> 
+          <h3><%= @user.name%></h3>
+          <% if logged_in? && current_user.own?(@user) %>
+          <%= link_to edit_user_path,
+          class: "waves-effect waves-light btn-flat blue white-text" do %>
+          <i class="material-icons">mode_edit</i>
+          Edit
+          <% end %>
+          <% end %>
+        </div>
+      </blockquote>
+    </div>
+  </div>
+</div>

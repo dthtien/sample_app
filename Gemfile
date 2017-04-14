@@ -60,3 +60,6 @@ gem 'materialize-sass', '~> 0.98.1'
 gem 'materialize-form', '~> 1.0.8'
 gem 'jquery-turbolinks'
 gem 'pg', group: :production
+gem 'faker',          '1.6.6'
+gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate-materialize'

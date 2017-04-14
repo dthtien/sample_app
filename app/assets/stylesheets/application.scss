@@ -1,5 +1,7 @@
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 @import "materialize";
+@import "sessions";
+@import "users";
 .notice {
   @extend .green;
   @extend .darken-2;
@@ -8,4 +10,16 @@
 .alert {
   @extend .red;
   @extend .accent-2;
+}
+footer{
+  margin-top: 15px;
+}
+#dropdown-user{
+  margin-top:65px;
+}
+#nav-header{
+  margin-bottom: 20px;
+}
+.pagination a li.active {
+  color: #fff;
 }
