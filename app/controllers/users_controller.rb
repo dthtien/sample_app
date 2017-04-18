@@ -1,17 +1,20 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user, only: [:edit, :update]
+  before_action :authenticate_user, only: [:index, :edit, :update]
   before_action :set_user, only: [:edit, :update]
   before_action :admin_user, only: [:destroy]
 
   def index
-    @users = User.paginate(page: params[:page],per_page: 10)
+    @users = User.where(activated: true).paginate(page: params[:page],per_page: 10)
   end
 
   # GET
   def show
     @user = User.find(params[:id])
+    redirect_to root_url and return unless @user.activated?
     # debugger
   end
+
+
   # GET
   def new
     @user = User.new
@@ -20,9 +23,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      log_in @user
-      flash[:notice] = "User create successful"
-      redirect_to @user
+      @user.send_activation_email
+      flash[:alert] = "Please check your email to activate your account."
+      redirect_to root_url
     else
       flash.now[:alert] = "Can't create user !"
       render :new
