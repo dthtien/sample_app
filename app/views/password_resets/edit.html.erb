@@ -5,7 +5,7 @@
 <div class="row">
   <div class="col m6 offset-m3">
     <%= simple_form_for (@user, url: password_reset_path(params[:id])) do |f| %>
-      <%= f.hidden :email, @user.email %>
+      <%= f.input :email, @user.email, as: 'hidden' %>
       <%= f.input :password %>
       <%= f.input :password_confirmation %>
 
