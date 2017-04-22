@@ -5,7 +5,25 @@
     Rails tutorials Chapter 5
   </p> 
   <% if logged_in? %>
-    <%= link_to "Users list", users_path,class: "btn waves-effect waves-light grey"%>
+    <div class="row">
+      <div class="col m2">
+        <div class="user-info">
+          <%= render 'shared/user_info' %>
+        </div>
+      </div>
+      <div class="col m10">
+        <div class="micropost_form">
+          <%= render 'shared/micropost_form' %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col m12">
+        <h3>Microposts Feed</h3>
+        <%= render 'shared/feed' %>
+      </div>
+    </div>
+    <%#= link_to "Users list", users_path,class: "btn waves-effect waves-light grey"%>
   <% else %>
     <%= link_to "Sign up now!", signup_path, class: "btn waves-effect waves-light" %>
   <% end %>

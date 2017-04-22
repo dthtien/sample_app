@@ -13,7 +13,9 @@ class User < ApplicationRecord
 
   has_secure_password
   validates :password, presence: true, length: {minimum: 6}
-    # Returns the hash digest of the given string.
+
+  scope :active, -> { where(activated: true) }
+  # Returns the hash digest of the given string.
   def self.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
@@ -46,6 +48,14 @@ class User < ApplicationRecord
     user == self
   end
 
+  def is_author?(record)
+    record.user == self
+  end
+
+  def cannot_destroy?(record)
+    !( admin? || is_author?(record) )
+  end
+
   def activate
     update_attribute(:activated,    true)
     update_attribute(:activated_at, Time.zone.now)
@@ -67,6 +77,10 @@ class User < ApplicationRecord
 
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
+  end
+
+  def feed
+    microposts
   end
   private
 

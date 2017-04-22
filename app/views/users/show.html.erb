@@ -1,24 +1,25 @@
 <div id="profile">
   <div class="row">
-    <div class="col s12 m4 l4">
-      <div class="profile-image center">
-        <%= gravatar_for @user %>
-      </div> 
-    </div>
-    <div class="col s12 m8 l8">
-      <blockquote>
-        <div class="profile-body"> 
-          <h3><%= @user.name%></h3>
-          <% if logged_in? && current_user.own?(@user) %>
-            <%= link_to edit_user_path,
-            class: "waves-effect waves-light btn-flat blue white-text" do %>
-            <i class="material-icons">mode_edit</i>
-            Edit
+    <div class="col s12 m12 l4">
+      <div class="card hoverable">
+        <div class="profile-image center">
+          <%= gravatar_for @user %>
+        </div> 
+        <blockquote>
+          <div class="profile-body"> 
+            <h3><%= @user.name%></h3>
+            <% if logged_in? && current_user.own?(@user) %>
+              <%= link_to edit_user_path,
+              class: "waves-effect waves-light btn-flat blue white-text" do %>
+              <i class="material-icons">mode_edit</i>
+              Edit
+              <% end %>
             <% end %>
-          <% end %>
-        </div>
-      </blockquote>
-      <div class="col m4">
+          </div>
+        </blockquote>
+      </div>
+    </div>
+      <div class="col s12 m12 l8">
         <% if @user.microposts.any? %>
           <h3> 
             Microposts (<%= pluralize @user.microposts.size, 'micropost' %>)
@@ -29,6 +30,5 @@
           <%= will_paginate @microposts %>
         <% end %>
       </div>
-    </div>
   </div>
 </div>

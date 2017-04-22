@@ -1,0 +1,9 @@
+<%= link_to gravatar_for(current_user), current_user%>
+<blockquote>
+  <p>
+    <%= current_user.name %>
+  </p>
+
+  <i class="count-microposts">(<%= pluralize(current_user.microposts.size, "micropost") %>)</i>
+    
+</blockquote>
