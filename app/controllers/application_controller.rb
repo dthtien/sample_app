@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  rescue_from ActiveRecord::RecordNotFound, with: :not_available
+  # rescue_from ActiveRecord::RecordNotFound, with: :not_available
   include SessionsHelper
   protected
     def authenticate_user

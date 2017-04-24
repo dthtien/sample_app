@@ -1,0 +1,7 @@
+<%= simple_form_for(current_user.active_relationships.build, remote: true) do |f| %>
+  <div>
+    <%= f.input :followed_id, as: :hidden, 
+      input_html: { value: @user.id }%>
+    <%= f.submit "Follow", class: "btn blue" %>
+  </div>
+<% end %>

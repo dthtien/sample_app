@@ -9,6 +9,7 @@
           <div class="profile-body"> 
             <h3><%= @user.name%></h3>
             <% if logged_in? && current_user.own?(@user) %>
+              <%= render 'shared/stats' %>
               <%= link_to edit_user_path,
               class: "waves-effect waves-light btn-flat blue white-text" do %>
               <i class="material-icons">mode_edit</i>
@@ -19,16 +20,17 @@
         </blockquote>
       </div>
     </div>
-      <div class="col s12 m12 l8">
-        <% if @user.microposts.any? %>
-          <h3> 
-            Microposts (<%= pluralize @user.microposts.size, 'micropost' %>)
-          </h3>
-          <ol class="microposts">
-            <%= render @microposts %>
-          </ol>
-          <%= will_paginate @microposts %>
-        <% end %>
-      </div>
+    <div class="col s12 m12 l8">
+      <%= render 'follow_form' if logged_in? %>
+      <% if @user.microposts.any? %>
+        <h3> 
+          Microposts (<%= pluralize @user.microposts.size, 'micropost' %>)
+        </h3>
+        <ol class="microposts">
+          <%= render @microposts %>
+        </ol>
+        <%= will_paginate @microposts %>
+      <% end %>
+    </div>
   </div>
 </div>

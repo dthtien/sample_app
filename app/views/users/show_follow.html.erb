@@ -1,0 +1,22 @@
+<%= provide(:title, @title) %>
+<div class="row">
+  <div class="col m4">
+    <div class="user-info">
+      <%= render 'user', user: @user %>
+      <%= render 'shared/stats' %>
+    </div>
+    <% if @users.any? %> 
+      <div class="user-avatars">
+        <% @users.each do |user| %>
+        <%= link_to gravatar_for(user), user %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="col m8">
+    <% if @users.any?%>
+    <%= render @users %>  
+    <% end %>
+    <%= will_paginate @users %>
+  </div>
+</div>
