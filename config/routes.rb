@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'search/show'
+
   get 'password_resets/new'
 
   get 'password_resets/edit'
@@ -29,4 +31,8 @@ Rails.application.routes.draw do
   resources :microposts, only: [:create, :destroy]
 
   resources :relationships, only: [:create, :destroy]
+
+  resources :hastags, only: [:show]
+
+  resource :search, only: [:show]
 end

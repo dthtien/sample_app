@@ -67,6 +67,14 @@
         </ul>
       </div>
     </nav>
+    <div class="search">
+      <div class="container">
+        <%= simple_form_for :search, url: search_path, method: :get do |f| %>
+          <%= f.input :term %>
+          <%= f.submit "Search", class: "btn blue" %>
+        <% end %>
+      </div>
+    </div>
       <div class="container">
         <div class="center">
          <% flash.each do |key, msg| %>

@@ -10,6 +10,13 @@ class Micropost < ApplicationRecord
 
 
   self.per_page = 10
+  # def self.search term
+  #   where("content LIKE ?", "%#{term}%")
+  # end
+
+  searchable do
+    text :content
+  end
 
   private
     def picture_size

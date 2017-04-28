@@ -10,7 +10,7 @@
         <%= image_tag micropost.picture.thumb.url, class: "responsive-img"  %>
       <% end %>
       <p>
-        <%= micropost.content %>
+        <%= posterize(micropost.content) %>
       </p> 
     <i>
       Post <%= time_ago_in_words(micropost.created_at) %> ago.

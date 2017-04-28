@@ -9,4 +9,13 @@ module ApplicationHelper
     end
   end
 
+  def posterize text
+    link_hastags(strip_tags(text)).html_safe
+  end
+
+  private
+    def link_hastags text
+      text.gsub(/#(\w+)/) { |match| link_to match, hastag_path($1) }
+    end
+
 end
